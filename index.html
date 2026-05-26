@@ -5,431 +5,308 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heko Collection Athens — Design Apartments in Athens, Greece</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2306101E'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='22' fill='%23C8953C' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-33SJV39RSR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-33SJV39RSR');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-33SJV39RSR');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:      #06101E;
-      --bg2:     #0B1826;
-      --bg3:     #0E1F32;
-      --gold:    #C8953C;
-      --gold-lt: #E6B96A;
-      --terra:   #B05535;
-      --cream:   #F2E8D5;
-      --muted:   #697B96;
-      --line:    rgba(200,149,60,.22);
-      --fd:      'Cormorant Garamond', Georgia, serif;
-      --fb:      'Jost', system-ui, sans-serif;
+      --bg: #06101E; --bg2: #0B1826; --bg3: #0E1F32;
+      --gold: #C8953C; --gold-lt: #E6B96A;
+      --cream: #F2E8D5; --muted: #697B96;
+      --line: rgba(200,149,60,.22);
+      --fd: 'Cormorant Garamond', Georgia, serif;
+      --fb: 'Jost', system-ui, sans-serif;
     }
-
     html { scroll-behavior: smooth; }
     body { font-family: var(--fb); background: var(--bg); color: var(--cream); overflow-x: hidden; }
 
-    /* ─── HERO ──────────────────────────────────── */
-    .hero {
-      min-height: 100svh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      padding: 100px 24px 140px;
+    /* APT NAV */
+    #apt-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(6,16,30,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 32px;
+      display: none; align-items: center; justify-content: space-between;
     }
+    #apt-nav .back-btn { font-family: var(--fb); font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 8px; transition: opacity .2s; }
+    #apt-nav .back-btn:hover { opacity: .7; }
+    #apt-nav .apt-nav-name { font-family: var(--fb); font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cream); opacity: .4; }
+
+    /* HERO */
+    .hero { min-height: 100svh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding: 100px 24px 140px; }
     .hero-slides { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-    .hero-slide {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center; background-repeat: no-repeat;
-      opacity: 0; animation: heroSlide 24s ease-in-out infinite;
-    }
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0; animation: heroSlide 24s ease-in-out infinite; }
     .hero-slide:nth-child(1) { animation-delay: 0s; }
     .hero-slide:nth-child(2) { animation-delay: 8s; }
     .hero-slide:nth-child(3) { animation-delay: 16s; }
-    @keyframes heroSlide {
-      0%, 4%  { opacity: 0; }
-      9%      { opacity: 1; }
-      30%     { opacity: 1; }
-      36%     { opacity: 0; }
-      100%    { opacity: 0; }
-    }
-    .hero::before {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      background:
-        radial-gradient(ellipse 140% 60% at 50% 110%, rgba(176,85,53,.18) 0%, transparent 55%),
-        linear-gradient(180deg, rgba(2,8,16,.78) 0%, rgba(5,16,31,.60) 45%, rgba(11,24,38,.82) 100%);
-    }
-    .hero::after {
-      content: ''; position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: .4; pointer-events: none; z-index: 2;
-    }
-    .stars { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-    .stars::before, .stars::after {
-      content: ''; position: absolute; width: 1px; height: 1px; border-radius: 50%; background: #fff;
-    }
-    .stars::before {
-      box-shadow:
-        88px 32px 0 rgba(255,255,255,.65), 214px 9px 0 rgba(255,255,255,.45),
-        356px 48px 0 rgba(255,255,255,.55), 497px 18px 0 rgba(255,255,255,.35),
-        631px 41px 0 rgba(255,255,255,.6), 789px 6px 0 rgba(255,255,255,.4),
-        932px 37px 0 rgba(255,255,255,.5), 1088px 14px 0 rgba(255,255,255,.35),
-        1231px 52px 0 rgba(255,255,255,.55), 1370px 28px 0 rgba(255,255,255,.4),
-        42px 118px 0 rgba(255,255,255,.3), 173px 142px 0 rgba(255,255,255,.5),
-        308px 98px 0 rgba(255,255,255,.4), 451px 160px 0 rgba(255,255,255,.3),
-        583px 125px 0 rgba(255,255,255,.55), 712px 105px 0 rgba(255,255,255,.35);
-    }
-    .stars::after {
-      box-shadow:
-        120px 210px 0 rgba(255,255,255,.4), 267px 188px 0 rgba(255,255,255,.55),
-        412px 230px 0 rgba(255,255,255,.3), 578px 200px 0 rgba(255,255,255,.5),
-        724px 218px 0 rgba(255,255,255,.35), 870px 195px 0 rgba(255,255,255,.45),
-        1030px 225px 0 rgba(255,255,255,.3), 1190px 205px 0 rgba(255,255,255,.5);
-    }
-    .moon {
-      position: absolute; top: 40px; right: 60px; z-index: 3;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      box-shadow: inset -10px -2px 0 0 var(--cream);
-      opacity: .55;
-    }
-
-    /* Acropolis SVG */
-    .acropolis {
-      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: min(100%, 1100px); z-index: 3; opacity: .12;
-      pointer-events: none;
-    }
-
-    .hero-inner { position: relative; z-index: 4; max-width: 640px; }
-    .eyebrow {
-      font-family: var(--fb);
-      font-size: .72rem; font-weight: 400; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
-    }
-    .hero-name {
-      font-family: var(--fd); font-size: clamp(3.6rem, 9vw, 7.2rem);
-      font-weight: 300; line-height: 1.0; letter-spacing: .01em;
-      color: var(--cream); margin-bottom: 10px;
-    }
-    .hero-name em { font-style: italic; color: var(--gold-lt); }
-    .hero-sub {
-      font-family: var(--fd); font-size: clamp(1.1rem, 2.5vw, 1.55rem);
-      font-weight: 300; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--cream); opacity: .65; margin-bottom: 28px;
-    }
-    .rule {
-      width: 52px; height: 1px; background: var(--gold); opacity: .7;
-      margin: 0 auto 28px; border: none;
-    }
-    .hero-tagline {
-      font-size: clamp(.9rem, 1.8vw, 1.05rem); font-weight: 300;
-      letter-spacing: .05em; color: var(--cream); opacity: .78;
-      line-height: 1.7; margin-bottom: 42px;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid var(--gold); color: var(--cream);
-      padding: 15px 36px; font-family: var(--fb); font-size: .78rem;
-      letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
-      transition: background .3s, color .3s;
-    }
-    .btn:hover { background: var(--gold); color: var(--bg); }
-    .scroll-hint {
-      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-      z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 8px;
-      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--cream); opacity: .4;
-    }
-    .scroll-tick {
-      width: 1px; height: 36px; background: var(--cream); opacity: .5;
-      animation: tickFade 2s ease-in-out infinite;
-    }
+    @keyframes heroSlide { 0%,4%{opacity:0} 9%{opacity:1} 30%{opacity:1} 36%{opacity:0} 100%{opacity:0} }
+    .hero::before { content:''; position:absolute; inset:0; z-index:1; background: radial-gradient(ellipse 140% 60% at 50% 110%,rgba(176,85,53,.18) 0%,transparent 55%), linear-gradient(180deg,rgba(2,8,16,.78) 0%,rgba(5,16,31,.60) 45%,rgba(11,24,38,.82) 100%); }
+    .hero::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); opacity:.4; pointer-events:none; z-index:2; }
+    .stars { position:absolute; inset:0; pointer-events:none; z-index:1; }
+    .stars::before,.stars::after { content:''; position:absolute; width:1px; height:1px; border-radius:50%; background:#fff; }
+    .stars::before { box-shadow: 88px 32px 0 rgba(255,255,255,.65),214px 9px 0 rgba(255,255,255,.45),356px 48px 0 rgba(255,255,255,.55),497px 18px 0 rgba(255,255,255,.35),631px 41px 0 rgba(255,255,255,.6),789px 6px 0 rgba(255,255,255,.4),932px 37px 0 rgba(255,255,255,.5),1088px 14px 0 rgba(255,255,255,.35),1231px 52px 0 rgba(255,255,255,.55),1370px 28px 0 rgba(255,255,255,.4),42px 118px 0 rgba(255,255,255,.3),173px 142px 0 rgba(255,255,255,.5),308px 98px 0 rgba(255,255,255,.4),451px 160px 0 rgba(255,255,255,.3),583px 125px 0 rgba(255,255,255,.55),712px 105px 0 rgba(255,255,255,.35); }
+    .stars::after { box-shadow: 120px 210px 0 rgba(255,255,255,.4),267px 188px 0 rgba(255,255,255,.55),412px 230px 0 rgba(255,255,255,.3),578px 200px 0 rgba(255,255,255,.5),724px 218px 0 rgba(255,255,255,.35),870px 195px 0 rgba(255,255,255,.45),1030px 225px 0 rgba(255,255,255,.3),1190px 205px 0 rgba(255,255,255,.5); }
+    .moon { position:absolute; top:40px; right:60px; z-index:3; width:40px; height:40px; border-radius:50%; box-shadow:inset -10px -2px 0 0 var(--cream); opacity:.55; }
+    .acropolis { position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:min(100%,1100px); z-index:3; opacity:.12; pointer-events:none; }
+    .hero-inner { position:relative; z-index:4; max-width:640px; }
+    .eyebrow { font-family:var(--fb); font-size:.72rem; font-weight:400; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; }
+    .hero-name { font-family:var(--fd); font-size:clamp(3.6rem,9vw,7.2rem); font-weight:300; line-height:1.0; letter-spacing:.01em; color:var(--cream); margin-bottom:10px; }
+    .hero-name em { font-style:italic; color:var(--gold-lt); }
+    .hero-sub { font-family:var(--fd); font-size:clamp(1.1rem,2.5vw,1.55rem); font-weight:300; letter-spacing:.18em; text-transform:uppercase; color:var(--cream); opacity:.65; margin-bottom:28px; }
+    .rule { width:52px; height:1px; background:var(--gold); opacity:.7; margin:0 auto 28px; border:none; }
+    .hero-tagline { font-size:clamp(.9rem,1.8vw,1.05rem); font-weight:300; letter-spacing:.05em; color:var(--cream); opacity:.78; line-height:1.7; margin-bottom:42px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--gold); color:var(--cream); padding:15px 36px; font-family:var(--fb); font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:background .3s,color .3s; }
+    .btn:hover { background:var(--gold); color:var(--bg); }
+    .scroll-hint { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); z-index:4; display:flex; flex-direction:column; align-items:center; gap:8px; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--cream); opacity:.4; }
+    .scroll-tick { width:1px; height:36px; background:var(--cream); opacity:.5; animation:tickFade 2s ease-in-out infinite; }
     @keyframes tickFade { 0%,100%{opacity:.2} 50%{opacity:.7} }
 
-    /* ─── MEANDER DIVIDER ───────────────────── */
-    .meander {
-      width: 100%; height: 20px; overflow: hidden;
-      background: var(--bg2);
-      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='20'%3E%3Cpath d='M0 10 L10 10 L10 2 L30 2 L30 18 L50 18 L50 2 L70 2 L70 10 L80 10' fill='none' stroke='%23C8953C' stroke-width='1.5'/%3E%3C/svg%3E");
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='20'%3E%3Cpath d='M0 10 L10 10 L10 2 L30 2 L30 18 L50 18 L50 2 L70 2 L70 10 L80 10' fill='none' stroke='%23C8953C' stroke-width='1.5'/%3E%3C/svg%3E");
-      -webkit-mask-repeat: repeat-x; mask-repeat: repeat-x;
-      background-color: var(--gold); opacity: .25;
-    }
+    /* MEANDER */
+    .meander { width:100%; height:20px; overflow:hidden; background:var(--bg2); -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='20'%3E%3Cpath d='M0 10 L10 10 L10 2 L30 2 L30 18 L50 18 L50 2 L70 2 L70 10 L80 10' fill='none' stroke='%23C8953C' stroke-width='1.5'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='20'%3E%3Cpath d='M0 10 L10 10 L10 2 L30 2 L30 18 L50 18 L50 2 L70 2 L70 10 L80 10' fill='none' stroke='%23C8953C' stroke-width='1.5'/%3E%3C/svg%3E"); -webkit-mask-repeat:repeat-x; mask-repeat:repeat-x; background-color:var(--gold); opacity:.25; }
 
-    /* ─── SECTION HEADER ─────────────────────── */
-    .sec-head {
-      text-align: center; padding: 90px 24px 56px; max-width: 640px; margin: 0 auto;
-    }
-    .sec-label {
-      display: block; font-size: .68rem; font-weight: 500; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
-    }
-    .sec-title {
-      font-family: var(--fd); font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 300; color: var(--cream); line-height: 1.2;
-    }
-    .sec-title em { font-style: italic; color: var(--gold-lt); }
-    .sec-sub {
-      margin-top: 16px; font-size: .9rem; color: var(--muted);
-      font-weight: 300; letter-spacing: .04em; line-height: 1.7;
-    }
+    /* SECTION HEADER */
+    .sec-head { text-align:center; padding:90px 24px 56px; max-width:640px; margin:0 auto; }
+    .sec-label { display:block; font-size:.68rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+    .sec-title { font-family:var(--fd); font-size:clamp(2rem,4.5vw,3.2rem); font-weight:300; color:var(--cream); line-height:1.2; }
+    .sec-title em { font-style:italic; color:var(--gold-lt); }
+    .sec-sub { margin-top:16px; font-size:.9rem; color:var(--muted); font-weight:300; letter-spacing:.04em; line-height:1.7; }
 
-    /* ─── PROPERTY CARDS ─────────────────────── */
-    .properties {
-      background: var(--bg2);
-      padding: 0 24px 90px;
-    }
-    .prop-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 24px; max-width: 1100px; margin: 0 auto;
-    }
-    .prop-card {
-      position: relative; border-radius: 2px; overflow: hidden;
-      aspect-ratio: 3/4;
-      cursor: pointer;
-    }
-    .prop-card-img {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      transition: transform .8s ease;
-    }
-    .prop-card:hover .prop-card-img { transform: scale(1.04); }
-    .prop-card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(0deg, rgba(6,16,30,.92) 0%, rgba(6,16,30,.4) 50%, rgba(6,16,30,.15) 100%);
-    }
-    .prop-card-body {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 36px 32px;
-    }
-    .prop-tag {
-      display: inline-block; font-size: .62rem; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,149,60,.4);
-      padding: 4px 12px; margin-bottom: 14px;
-    }
-    .prop-name {
-      font-family: var(--fd); font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      font-weight: 300; color: var(--cream); line-height: 1.1;
-      margin-bottom: 6px;
-    }
-    .prop-name em { font-style: italic; color: var(--gold-lt); }
-    .prop-desc {
-      font-size: .8rem; color: var(--cream); opacity: .6; letter-spacing: .04em;
-      margin-bottom: 10px; line-height: 1.5;
-    }
-    .prop-meta {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
-    }
-    .prop-chip {
-      font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--cream); opacity: .55; border: 1px solid rgba(242,232,213,.2);
-      padding: 4px 10px;
-    }
-    .prop-cta-row {
-      display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
-    }
-    .btn-prop {
-      display: inline-flex; align-items: center;
-      border: 1px solid var(--gold); color: var(--cream);
-      padding: 12px 28px; font-family: var(--fb); font-size: .72rem;
-      letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
-      transition: background .3s, color .3s;
-    }
-    .btn-prop:hover { background: var(--gold); color: var(--bg); }
-    .btn-prop-ghost {
-      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--cream); opacity: .5; text-decoration: none;
-      border-bottom: 1px solid rgba(242,232,213,.25); padding-bottom: 2px;
-      transition: opacity .3s;
-    }
-    .btn-prop-ghost:hover { opacity: .9; }
+    /* PROPERTY CARDS */
+    .properties { background:var(--bg2); padding:0 24px 90px; }
+    .prop-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1100px; margin:0 auto; }
+    .prop-card { position:relative; border-radius:2px; overflow:hidden; aspect-ratio:3/4; cursor:pointer; }
+    .prop-card-img { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .8s ease; }
+    .prop-card:hover .prop-card-img { transform:scale(1.04); }
+    .prop-card-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(6,16,30,.92) 0%,rgba(6,16,30,.4) 50%,rgba(6,16,30,.15) 100%); }
+    .prop-card-body { position:absolute; bottom:0; left:0; right:0; padding:36px 32px; }
+    .prop-tag { display:inline-block; font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(200,149,60,.4); padding:4px 12px; margin-bottom:14px; }
+    .prop-name { font-family:var(--fd); font-size:clamp(1.9rem,3.5vw,2.8rem); font-weight:300; color:var(--cream); line-height:1.1; margin-bottom:6px; }
+    .prop-name em { font-style:italic; color:var(--gold-lt); }
+    .prop-desc { font-size:.8rem; color:var(--cream); opacity:.6; letter-spacing:.04em; margin-bottom:10px; line-height:1.5; }
+    .prop-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+    .prop-chip { font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); opacity:.55; border:1px solid rgba(242,232,213,.2); padding:4px 10px; }
+    .prop-cta-row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .btn-prop { display:inline-flex; align-items:center; border:1px solid var(--gold); color:var(--cream); padding:12px 28px; font-family:var(--fb); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; transition:background .3s,color .3s; }
+    .btn-prop:hover { background:var(--gold); color:var(--bg); }
+    .btn-prop-ghost { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); opacity:.5; cursor:pointer; background:none; border:none; border-bottom:1px solid rgba(242,232,213,.25); padding:0 0 2px; font-family:var(--fb); transition:opacity .3s; }
+    .btn-prop-ghost:hover { opacity:.9; }
 
-    /* ─── PILLARS ─────────────────────────────── */
-    .pillars { background: var(--bg2); padding: 0 24px 90px; }
-    .pillars-inner {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      max-width: 900px; margin: 0 auto;
-      border: 1px solid var(--line);
-    }
-    .pillar {
-      padding: 52px 40px 48px; text-align: center;
-      border-right: 1px solid var(--line);
-    }
-    .pillar:last-child { border-right: none; }
-    .pillar-glyph { font-size: 1.5rem; display: block; margin-bottom: 20px; }
-    .pillar-title {
-      font-family: var(--fd); font-size: 1.25rem; font-weight: 400;
-      color: var(--cream); margin-bottom: 10px;
-    }
-    .pillar-body { font-size: .82rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    /* PILLARS */
+    .pillars { background:var(--bg2); padding:0 24px 90px; }
+    .pillars-inner { display:grid; grid-template-columns:repeat(3,1fr); max-width:900px; margin:0 auto; border:1px solid var(--line); }
+    .pillar { padding:52px 40px 48px; text-align:center; border-right:1px solid var(--line); }
+    .pillar:last-child { border-right:none; }
+    .pillar-glyph { font-size:1.5rem; display:block; margin-bottom:20px; }
+    .pillar-title { font-family:var(--fd); font-size:1.25rem; font-weight:400; color:var(--cream); margin-bottom:10px; }
+    .pillar-body { font-size:.82rem; color:var(--muted); line-height:1.7; font-weight:300; }
 
-    /* ─── ABOUT ──────────────────────────────── */
-    .about {
-      display: grid; grid-template-columns: 140px 1fr;
-      gap: 56px; max-width: 900px; margin: 0 auto;
-      padding: 90px 24px;
-    }
-    .about-label {
-      font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold); padding-top: 10px;
-    }
-    .about h2 {
-      font-family: var(--fd); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 300; color: var(--cream); margin-bottom: 24px; line-height: 1.2;
-    }
-    .about h2 em { font-style: italic; color: var(--gold-lt); }
-    .about p { font-size: .88rem; color: var(--muted); line-height: 1.85; font-weight: 300; margin-bottom: 16px; }
-    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .badge {
-      font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
-      border: 1px solid var(--line); color: var(--cream); opacity: .7;
-      padding: 6px 14px;
-    }
+    /* ABOUT */
+    .about { display:grid; grid-template-columns:140px 1fr; gap:56px; max-width:900px; margin:0 auto; padding:90px 24px; }
+    .about-label { font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); padding-top:10px; }
+    .about h2 { font-family:var(--fd); font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:300; color:var(--cream); margin-bottom:24px; line-height:1.2; }
+    .about h2 em { font-style:italic; color:var(--gold-lt); }
+    .about p { font-size:.88rem; color:var(--muted); line-height:1.85; font-weight:300; margin-bottom:16px; }
+    .badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+    .badge { font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid var(--line); color:var(--cream); opacity:.7; padding:6px 14px; }
 
-    /* ─── AMENITIES ───────────────────────────── */
-    .amenities { background: var(--bg2); padding: 90px 24px; }
-    .am-grid {
-      display: grid; grid-template-columns: repeat(6, 1fr);
-      gap: 1px; max-width: 960px; margin: 0 auto;
-      background: var(--line);
-    }
-    .am-item {
-      background: var(--bg2);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 40px 16px 36px; gap: 14px; text-align: center;
-    }
-    .am-icon {
-      width: 40px; height: 40px; flex-shrink: 0;
-    }
-    .am-icon svg { width: 100%; height: 100%; stroke: var(--gold); stroke-width: 1.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-    .am-name { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--cream); opacity: .7; }
+    /* AMENITIES (collection) */
+    .amenities { background:var(--bg2); padding:90px 24px; }
+    .am-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:1px; max-width:960px; margin:0 auto; background:var(--line); }
+    .am-item { background:var(--bg2); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 16px 36px; gap:14px; text-align:center; }
+    .am-icon { width:40px; height:40px; flex-shrink:0; }
+    .am-icon svg { width:100%; height:100%; stroke:var(--gold); stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .am-name { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); opacity:.7; }
 
-    /* ─── QUOTE ───────────────────────────────── */
-    .quote-wrap {
-      max-width: 680px; margin: 0 auto; padding: 80px 24px;
-      text-align: center;
-    }
-    .quote-mark { font-family: var(--fd); font-size: 5rem; line-height: .5; color: var(--gold); opacity: .3; display: block; margin-bottom: 16px; }
-    .quote-text { font-family: var(--fd); font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-weight: 300; font-style: italic; color: var(--cream); opacity: .85; line-height: 1.7; margin-bottom: 20px; }
-    .quote-attr { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); opacity: .65; }
+    /* QUOTE */
+    .quote-wrap { max-width:680px; margin:0 auto; padding:80px 24px; text-align:center; }
+    .quote-mark { font-family:var(--fd); font-size:5rem; line-height:.5; color:var(--gold); opacity:.3; display:block; margin-bottom:16px; }
+    .quote-text { font-family:var(--fd); font-size:clamp(1.15rem,2.5vw,1.5rem); font-weight:300; font-style:italic; color:var(--cream); opacity:.85; line-height:1.7; margin-bottom:20px; }
+    .quote-attr { font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); opacity:.65; }
 
-    /* ─── REVIEWS ─────────────────────────────── */
-    .reviews { background: var(--bg2); padding: 90px 24px; }
-    .reviews-inner { max-width: 1060px; margin: 0 auto; }
-    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .review-card {
-      background: var(--bg3); padding: 36px 32px;
-      border: 1px solid var(--line);
-    }
-    .review-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
-    .reviewer-name { font-size: .88rem; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
-    .reviewer-origin { font-size: .72rem; color: var(--muted); letter-spacing: .04em; }
-    .review-rating { font-family: var(--fd); font-size: 1.6rem; font-weight: 600; color: var(--gold); }
-    .review-text { font-size: .82rem; color: var(--muted); line-height: 1.75; font-weight: 300; margin-bottom: 18px; }
-    .review-footer { display: flex; justify-content: space-between; align-items: center; }
-    .review-date { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); opacity: .6; }
-    .review-prop {
-      font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--gold); opacity: .65; border: 1px solid rgba(200,149,60,.25);
-      padding: 3px 8px;
-    }
+    /* REVIEWS (collection) */
+    .reviews { background:var(--bg2); padding:90px 24px; }
+    .reviews-inner { max-width:1060px; margin:0 auto; }
+    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .review-card { background:var(--bg3); padding:36px 32px; border:1px solid var(--line); }
+    .review-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; }
+    .reviewer-name { font-size:.88rem; font-weight:500; color:var(--cream); margin-bottom:4px; }
+    .reviewer-origin { font-size:.72rem; color:var(--muted); letter-spacing:.04em; }
+    .review-rating { font-family:var(--fd); font-size:1.6rem; font-weight:600; color:var(--gold); }
+    .review-text { font-size:.82rem; color:var(--muted); line-height:1.75; font-weight:300; margin-bottom:18px; }
+    .review-footer { display:flex; justify-content:space-between; align-items:center; }
+    .review-date { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); opacity:.6; }
+    .review-prop { font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); opacity:.65; border:1px solid rgba(200,149,60,.25); padding:3px 8px; }
 
-    /* ─── LOCATION ────────────────────────────── */
-    .location-strip { background: var(--bg); padding: 90px 24px; }
-    .loc-inner { max-width: 740px; margin: 0 auto; text-align: center; }
-    .loc-label { display: block; font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-    .loc-title { font-family: var(--fd); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 300; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
-    .loc-title em { font-style: italic; color: var(--gold-lt); }
-    .loc-address { font-size: .82rem; color: var(--muted); letter-spacing: .06em; line-height: 1.7; margin-bottom: 20px; }
-    .loc-text { font-size: .84rem; color: var(--muted); line-height: 1.8; font-weight: 300; max-width: 560px; margin: 0 auto 36px; }
-    .loc-landmarks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .loc-landmark { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cream); opacity: .55; border: 1px solid var(--line); padding: 7px 16px; }
+    /* LOCATION */
+    .location-strip { background:var(--bg); padding:90px 24px; }
+    .loc-inner { max-width:740px; margin:0 auto; text-align:center; }
+    .loc-label { display:block; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; }
+    .loc-title { font-family:var(--fd); font-size:clamp(2rem,4.5vw,3.2rem); font-weight:300; color:var(--cream); margin-bottom:20px; line-height:1.2; }
+    .loc-title em { font-style:italic; color:var(--gold-lt); }
+    .loc-address { font-size:.82rem; color:var(--muted); letter-spacing:.06em; line-height:1.7; margin-bottom:20px; }
+    .loc-text { font-size:.84rem; color:var(--muted); line-height:1.8; font-weight:300; max-width:560px; margin:0 auto 36px; }
+    .loc-landmarks { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+    .loc-landmark { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--cream); opacity:.55; border:1px solid var(--line); padding:7px 16px; }
 
-    /* ─── FINAL CTA ───────────────────────────── */
-    .final-cta { background: var(--bg2); padding: 100px 24px; text-align: center; }
-    .final-cta h2 { font-family: var(--fd); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 16px; }
-    .final-cta h2 em { font-style: italic; color: var(--gold-lt); }
-    .final-cta .sub { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 44px; }
-    .cta-cards {
-      display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
-    }
-    .cta-card {
-      flex: 1; min-width: 240px; max-width: 380px;
-      border: 1px solid var(--line); padding: 40px 32px;
-      text-align: left;
-    }
-    .cta-card-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-    .cta-card-name { font-family: var(--fd); font-size: 1.7rem; font-weight: 300; color: var(--cream); margin-bottom: 8px; line-height: 1.15; }
-    .cta-card-name em { font-style: italic; color: var(--gold-lt); }
-    .cta-card-meta { font-size: .75rem; color: var(--muted); letter-spacing: .05em; margin-bottom: 28px; line-height: 1.6; }
-    .btn-fill {
-      display: inline-flex; align-items: center;
-      background: var(--gold); color: var(--bg);
-      padding: 14px 32px; font-family: var(--fb); font-size: .75rem;
-      letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
-      transition: background .3s, opacity .3s; font-weight: 500;
-    }
-    .btn-fill:hover { opacity: .85; }
+    /* FINAL CTA */
+    .final-cta { background:var(--bg2); padding:100px 24px; text-align:center; }
+    .final-cta h2 { font-family:var(--fd); font-size:clamp(2.2rem,5vw,3.6rem); font-weight:300; color:var(--cream); line-height:1.15; margin-bottom:16px; }
+    .final-cta h2 em { font-style:italic; color:var(--gold-lt); }
+    .final-cta .sub { font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:44px; }
+    .cta-cards { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; }
+    .cta-card { flex:1; min-width:240px; max-width:380px; border:1px solid var(--line); padding:40px 32px; text-align:left; }
+    .cta-card-label { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+    .cta-card-name { font-family:var(--fd); font-size:1.7rem; font-weight:300; color:var(--cream); margin-bottom:8px; line-height:1.15; }
+    .cta-card-name em { font-style:italic; color:var(--gold-lt); }
+    .cta-card-meta { font-size:.75rem; color:var(--muted); letter-spacing:.05em; margin-bottom:28px; line-height:1.6; }
+    .btn-fill { display:inline-flex; align-items:center; background:var(--gold); color:var(--bg); padding:14px 32px; font-family:var(--fb); font-size:.75rem; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:background .3s,opacity .3s; font-weight:500; }
+    .btn-fill:hover { opacity:.85; }
 
-    /* ─── FOOTER ──────────────────────────────── */
-    footer {
-      background: var(--bg);
-      border-top: 1px solid var(--line);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 28px 48px;
-      font-size: .72rem; letter-spacing: .1em; color: var(--muted);
-    }
-    footer a { color: var(--gold); text-decoration: none; opacity: .75; transition: opacity .2s; }
-    footer a:hover { opacity: 1; }
+    /* FOOTER */
+    footer { background:var(--bg); border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; padding:28px 48px; font-size:.72rem; letter-spacing:.1em; color:var(--muted); }
+    footer a { color:var(--gold); text-decoration:none; opacity:.75; transition:opacity .2s; }
+    footer a:hover { opacity:1; }
+    footer button { color:var(--gold); background:none; border:none; cursor:pointer; font-family:var(--fb); font-size:.72rem; letter-spacing:.1em; opacity:.75; transition:opacity .2s; }
+    footer button:hover { opacity:1; }
 
-    /* ─── ANIMATIONS ──────────────────────────── */
-    @keyframes riseUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .85s ease, transform .85s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: .1s; }
-    .d2 { transition-delay: .2s; }
-    .d3 { transition-delay: .3s; }
+    /* ANIMATIONS */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .85s ease,transform .85s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes tickPulse { 0%,100%{opacity:.35;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.08)} }
+    @keyframes moonGlow { 0%,100%{box-shadow:0 0 30px rgba(228,190,106,.45),0 0 80px rgba(228,190,106,.15)} 50%{box-shadow:0 0 45px rgba(228,190,106,.6),0 0 100px rgba(228,190,106,.25)} }
 
-    /* ─── RESPONSIVE ──────────────────────────── */
-    @media (max-width: 900px) {
-      .prop-grid { grid-template-columns: 1fr; }
-      .prop-card { aspect-ratio: 4/3; }
-      .pillars-inner { grid-template-columns: 1fr; }
-      .pillar { border-right: none; border-bottom: 1px solid var(--line); }
-      .pillar:last-child { border-bottom: none; }
-      .about { grid-template-columns: 1fr; gap: 20px; }
-      .about-label { padding-top: 0; }
-      .am-grid { grid-template-columns: repeat(3, 1fr); }
-      .reviews-grid { grid-template-columns: 1fr 1fr; }
-      .cta-cards { flex-direction: column; align-items: center; }
-      .cta-card { max-width: 100%; min-width: 0; width: 100%; }
+    /* === APT PAGE OVERRIDES === */
+    .apt-page .moon { position:absolute; top:64px; right:10%; width:44px; height:44px; border-radius:50%; background:radial-gradient(circle at 38% 38%,#FFFAEE,#E4BE6A); box-shadow:0 0 30px rgba(228,190,106,.45),0 0 80px rgba(228,190,106,.15); animation:moonGlow 4s ease-in-out infinite; opacity:1; }
+    .apt-page .eyebrow { font-size:10px; letter-spacing:.45em; opacity:0; animation:fadeUp .9s ease forwards .3s; }
+    .apt-page .hero-name { font-size:clamp(60px,12vw,130px); line-height:.88; opacity:0; animation:fadeUp .9s ease forwards .5s; }
+    .apt-page .hero-sub { font-size:clamp(13px,2.2vw,20px); letter-spacing:.3em; color:var(--muted); margin-bottom:40px; opacity:0; animation:fadeUp .9s ease forwards .65s; }
+    .apt-page .rule { width:72px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 40px; opacity:0; animation:fadeIn .9s ease forwards .78s; }
+    .apt-page .hero-tagline { font-family:var(--fd); font-size:clamp(19px,3.2vw,28px); font-style:italic; color:rgba(242,232,213,.72); line-height:1.55; max-width:480px; margin:0 auto 64px; opacity:0; animation:fadeUp .9s ease forwards .9s; }
+    .apt-page .scroll-hint { opacity:0; animation:fadeIn 1s ease forwards 1.6s; }
+    .apt-page .scroll-hint span { font-size:9px; letter-spacing:.35em; color:var(--muted); }
+    .apt-page .scroll-tick { background:linear-gradient(180deg,var(--gold),transparent); animation:tickPulse 2.2s ease-in-out infinite; }
+    .apt-page .btn { display:inline-block; position:relative; padding:18px 60px; border:1px solid var(--gold); color:var(--gold); font-family:var(--fb); font-size:11px; font-weight:500; letter-spacing:.38em; text-transform:uppercase; text-decoration:none; overflow:hidden; transition:color .35s ease; opacity:0; animation:fadeUp .9s ease forwards 1.05s; }
+    .apt-page .btn::before { content:''; position:absolute; inset:0; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .42s cubic-bezier(.25,.46,.45,.94); }
+    .apt-page .btn:hover { color:var(--bg); }
+    .apt-page .btn:hover::before { transform:scaleX(1); }
+    .apt-page .btn span { position:relative; z-index:1; }
+    .apt-page .pillars { padding:90px 32px; }
+    .apt-page .pillars-inner { max-width:960px; }
+    .apt-page .pillar { padding:56px 36px; transition:background .3s; }
+    .apt-page .pillar:hover { background:rgba(200,149,60,.035); }
+    .apt-page .pillar-glyph { font-size:28px; margin-bottom:24px; line-height:1; filter:saturate(.6); }
+    .apt-page .pillar-title { font-size:24px; font-weight:400; margin-bottom:14px; }
+    .apt-page .pillar-body { font-size:13px; line-height:1.75; }
+    .apt-page .about { padding:120px 48px; max-width:1020px; grid-template-columns:160px 1fr; gap:80px; }
+    .apt-page .about-label { font-size:10px; letter-spacing:.42em; position:sticky; top:60px; }
+    .apt-page .about h2 { font-size:clamp(34px,5vw,54px); margin-bottom:36px; }
+    .apt-page .about p { font-size:15px; line-height:1.9; color:rgba(242,232,213,.68); margin-bottom:22px; }
+    .apt-page .badge { padding:8px 18px; font-size:11px; letter-spacing:.2em; }
+    .apt-page .amenities { padding:120px 48px; }
+    .apt-page .sec-head { padding:0; margin-bottom:80px; }
+    .apt-page .sec-label { font-size:10px; letter-spacing:.42em; margin-bottom:20px; }
+    .apt-page .sec-title { font-size:clamp(38px,5.5vw,62px); line-height:1.15; }
+    .apt-page .am-item { background:none; padding:52px 20px 44px; gap:20px; transition:background .35s; }
+    .apt-page .am-item:hover { background:rgba(200,149,60,.04); }
+    .apt-page .am-icon { width:64px; height:64px; }
+    .apt-page .am-name { font-size:11px; letter-spacing:.14em; color:rgba(242,232,213,.6); }
+    .apt-page .reviews { background:var(--bg3); padding:120px 48px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .apt-page .reviews-inner { max-width:1080px; }
+    .apt-page .reviews-grid { gap:2px; }
+    .apt-page .review-card { background:var(--bg2); padding:40px 36px; border:none; border-top:2px solid var(--gold); }
+    .apt-page .review-top { margin-bottom:24px; }
+    .apt-page .reviewer-name { font-size:13px; }
+    .apt-page .review-rating { font-size:30px; font-weight:300; line-height:1; white-space:nowrap; }
+    .apt-page .review-text { font-family:var(--fd); font-size:16px; font-style:italic; line-height:1.72; color:rgba(242,232,213,.75); margin-bottom:0; }
+    .apt-page .review-date { margin-top:24px; font-size:10px; letter-spacing:.3em; display:block; }
+    .apt-page .location-strip { background:var(--bg3); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:100px 48px; }
+    .apt-page .loc-inner { max-width:680px; }
+    .apt-page .loc-label { font-size:10px; letter-spacing:.42em; margin-bottom:20px; }
+    .apt-page .loc-title { font-size:clamp(28px,4vw,48px); margin-bottom:28px; }
+    .apt-page .loc-address { font-family:var(--fd); font-size:clamp(20px,2.8vw,28px); font-weight:300; color:var(--cream); line-height:1.55; margin-bottom:28px; }
+    .apt-page .loc-text { font-size:15px; line-height:1.9; margin-bottom:40px; }
+    .apt-page .loc-landmarks { gap:12px; }
+    .apt-page .loc-landmark { padding:10px 22px; font-size:11px; letter-spacing:.22em; }
+    .apt-page .final-cta { padding:140px 48px; }
+    .apt-page .final-cta h2 { font-size:clamp(40px,7vw,80px); margin-bottom:20px; }
+    .apt-page .final-cta .sub { font-size:13px; margin-bottom:56px; }
+    .apt-page .btn-fill { padding:22px 88px; font-size:11px; font-weight:600; letter-spacing:.38em; }
+    .apt-page .btn-fill:hover { background:var(--gold-lt); transform:translateY(-3px); box-shadow:0 16px 40px rgba(200,149,60,.25); }
+    .apt-page footer { padding:40px 48px; border-top:1px solid rgba(200,149,60,.1); }
+    .apt-page footer p,.apt-page footer a,.apt-page footer button { font-size:11px; letter-spacing:.2em; }
+
+    /* GALLERY */
+    .gallery { background:var(--bg); }
+    .gallery-grid { display:grid; gap:3px; }
+    .gallery-card { position:relative; overflow:hidden; aspect-ratio:3/2; cursor:pointer; }
+    .gallery-card img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.72) saturate(.88); transition:transform .65s cubic-bezier(.25,.46,.45,.94),filter .4s ease; }
+    .gallery-card:hover img { transform:scale(1.07); filter:brightness(.88) saturate(1.05); }
+    .gallery-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(6,16,30,.75) 0%,transparent 55%); }
+    .gallery-card-label { position:absolute; bottom:28px; left:28px; }
+    .gallery-card-tag { display:block; font-size:9px; font-weight:400; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .gallery-card-name { font-family:var(--fd); font-size:22px; font-weight:300; color:var(--cream); line-height:1.2; }
+
+    /* Athens2 gallery */
+    #page-athens2 .gallery-grid { grid-template-columns:repeat(3,1fr); }
+    /* Modern gallery */
+    #page-modern .gallery-grid { grid-template-columns:repeat(6,1fr); }
+    #page-modern .gallery-card { grid-column:span 2; }
+    #page-modern .gallery-card.wide { grid-column:span 3; }
+
+    /* Amenities per page */
+    #page-athens2 .am-grid { grid-template-columns:repeat(3,1fr); max-width:720px; background:none; gap:0; }
+    #page-modern .am-grid { grid-template-columns:repeat(5,1fr); max-width:900px; background:none; gap:0; }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .prop-grid { grid-template-columns:1fr; }
+      .prop-card { aspect-ratio:4/3; }
+      .pillars-inner { grid-template-columns:1fr; }
+      .pillar { border-right:none; border-bottom:1px solid var(--line); }
+      .pillar:last-child { border-bottom:none; }
+      .about { grid-template-columns:1fr; gap:20px; }
+      .about-label { padding-top:0; }
+      .am-grid { grid-template-columns:repeat(3,1fr); }
+      .reviews-grid { grid-template-columns:1fr 1fr; }
+      .cta-cards { flex-direction:column; align-items:center; }
+      .cta-card { max-width:100%; min-width:0; width:100%; }
     }
-    @media (max-width: 600px) {
-      .am-grid { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
-      .prop-card-body { padding: 24px 20px; }
+    @media (max-width:768px) {
+      .apt-page .about { grid-template-columns:1fr; gap:28px; padding:80px 24px; }
+      .apt-page .about-label { position:static; }
+      .apt-page .amenities,.apt-page .reviews,.apt-page .location-strip,.apt-page .final-cta { padding-left:24px; padding-right:24px; }
+      .apt-page .reviews-grid { grid-template-columns:1fr; }
+      .gallery-grid { grid-template-columns:1fr !important; }
+      .gallery-card,.gallery-card.wide { grid-column:span 1 !important; aspect-ratio:16/9; }
+      #page-athens2 .am-grid,#page-modern .am-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:600px) {
+      .am-grid { grid-template-columns:repeat(2,1fr); }
+      .reviews-grid { grid-template-columns:1fr; }
+      footer { flex-direction:column; gap:12px; text-align:center; padding:28px 24px; }
+      .prop-card-body { padding:24px 20px; }
+      #apt-nav { padding:12px 16px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════ HERO ═══════════════ -->
+<!-- APT NAV -->
+<nav id="apt-nav">
+  <button class="back-btn" onclick="showPage('home')">&#8592; Collection</button>
+  <span class="apt-nav-name" id="apt-nav-name"></span>
+</nav>
+
+<!-- ===================== PAGE: HOME ===================== -->
+<div id="page-home">
+
 <section class="hero">
   <div class="hero-slides">
     <div class="hero-slide" style="background-image:url('https://heko-athens-landing.github.io/photos/room.jpg')"></div>
@@ -438,405 +315,456 @@
   </div>
   <div class="stars"></div>
   <div class="moon"></div>
-
   <svg class="acropolis" viewBox="0 0 1100 280" xmlns="http://www.w3.org/2000/svg" fill="var(--cream)">
     <path d="M0 280 Q80 240 180 220 Q300 198 420 185 Q540 172 560 168 Q580 164 600 163 Q620 162 640 163 Q660 164 680 168 Q700 172 820 185 Q940 198 1060 220 Q1060 220 1100 240 L1100 280Z"/>
-    <rect x="332" y="195" width="436" height="10"/>
-    <rect x="344" y="205" width="412" height="9"/>
-    <rect x="355" y="214" width="390" height="8"/>
-    <rect x="338" y="155" width="424" height="14"/>
-    <rect x="344" y="146" width="412" height="9"/>
+    <rect x="332" y="195" width="436" height="10"/><rect x="344" y="205" width="412" height="9"/><rect x="355" y="214" width="390" height="8"/>
+    <rect x="338" y="155" width="424" height="14"/><rect x="344" y="146" width="412" height="9"/>
     <polygon points="344,146 756,146 550,95"/>
-    <rect x="349" y="169" width="14" height="42"/>
-    <rect x="371" y="169" width="14" height="42"/>
-    <rect x="393" y="169" width="14" height="42"/>
-    <rect x="415" y="169" width="14" height="42"/>
-    <rect x="437" y="169" width="14" height="42"/>
-    <rect x="459" y="169" width="14" height="42"/>
-    <rect x="481" y="169" width="14" height="42"/>
-    <rect x="503" y="169" width="14" height="42"/>
-    <rect x="525" y="169" width="14" height="42"/>
-    <rect x="547" y="169" width="14" height="42"/>
-    <rect x="569" y="169" width="14" height="42"/>
-    <rect x="591" y="169" width="14" height="42"/>
-    <rect x="613" y="169" width="14" height="42"/>
-    <rect x="635" y="169" width="14" height="42"/>
-    <rect x="657" y="169" width="14" height="42"/>
-    <rect x="679" y="169" width="14" height="42"/>
-    <rect x="701" y="169" width="14" height="42"/>
-    <rect x="723" y="169" width="14" height="42"/>
+    <rect x="349" y="169" width="14" height="42"/><rect x="371" y="169" width="14" height="42"/><rect x="393" y="169" width="14" height="42"/>
+    <rect x="415" y="169" width="14" height="42"/><rect x="437" y="169" width="14" height="42"/><rect x="459" y="169" width="14" height="42"/>
+    <rect x="481" y="169" width="14" height="42"/><rect x="503" y="169" width="14" height="42"/><rect x="525" y="169" width="14" height="42"/>
+    <rect x="547" y="169" width="14" height="42"/><rect x="569" y="169" width="14" height="42"/><rect x="591" y="169" width="14" height="42"/>
+    <rect x="613" y="169" width="14" height="42"/><rect x="635" y="169" width="14" height="42"/><rect x="657" y="169" width="14" height="42"/>
+    <rect x="679" y="169" width="14" height="42"/><rect x="701" y="169" width="14" height="42"/><rect x="723" y="169" width="14" height="42"/>
     <rect x="745" y="169" width="14" height="42"/>
   </svg>
-
   <div class="hero-inner">
-    <p class="eyebrow">Athens &nbsp;·&nbsp; Greece &nbsp;·&nbsp; Design Apartments</p>
+    <p class="eyebrow">Athens &nbsp;&middot;&nbsp; Greece &nbsp;&middot;&nbsp; Design Apartments</p>
     <h1 class="hero-name"><em>Heko</em><br>Collection</h1>
     <p class="hero-sub">Athens</p>
     <div class="rule"></div>
     <p class="hero-tagline">Two apartments. One city.<br>All of Athens at your doorstep.</p>
-    <a href="#apartments" class="btn">
-      <span>Choose Your Stay</span>
-    </a>
+    <a href="#apartments" class="btn"><span>Choose Your Stay</span></a>
   </div>
-
-  <div class="scroll-hint">
-    <span>Discover More</span>
-    <div class="scroll-tick"></div>
-  </div>
+  <div class="scroll-hint"><span>Discover More</span><div class="scroll-tick"></div></div>
 </section>
 
 <div class="meander"></div>
 
-<!-- ═══════════════ PILLARS ═══════════════ -->
-<section class="pillars" style="background: var(--bg2); padding-top: 90px;">
+<section class="pillars" style="padding-top:90px;">
   <div class="pillars-inner">
-    <div class="pillar reveal">
-      <span class="pillar-glyph">🏛</span>
-      <h3 class="pillar-title">Heart of Athens</h3>
-      <p class="pillar-body">Both apartments are steps from the Panathenaic Stadium, metro Evangelismos, and the Acropolis — in the living, breathing city</p>
-    </div>
-    <div class="pillar reveal d1">
-      <span class="pillar-glyph">◈</span>
-      <h3 class="pillar-title">Two Options</h3>
-      <p class="pillar-body">A cosy design studio for two, or a spacious two-bedroom apartment for families and groups — both at Rizari 15</p>
-    </div>
-    <div class="pillar reveal d2">
-      <span class="pillar-glyph">✦</span>
-      <h3 class="pillar-title">Curated Design</h3>
-      <p class="pillar-body">Mediterranean soul with contemporary comfort — marble, parquet, ochre tones, and genuine Greek hospitality</p>
-    </div>
+    <div class="pillar reveal"><span class="pillar-glyph">&#127963;</span><h3 class="pillar-title">Heart of Athens</h3><p class="pillar-body">Both apartments are steps from the Panathenaic Stadium, metro Evangelismos, and the Acropolis</p></div>
+    <div class="pillar reveal d1"><span class="pillar-glyph">&#9672;</span><h3 class="pillar-title">Two Options</h3><p class="pillar-body">A cosy design studio for two, or a spacious two-bedroom apartment for families and groups</p></div>
+    <div class="pillar reveal d2"><span class="pillar-glyph">&#10022;</span><h3 class="pillar-title">Curated Design</h3><p class="pillar-body">Mediterranean soul with contemporary comfort — marble, parquet, ochre tones, genuine Greek hospitality</p></div>
   </div>
 </section>
 
-<!-- ═══════════════ PROPERTIES ═══════════════ -->
 <section class="properties" id="apartments">
   <div class="sec-head reveal">
     <span class="sec-label">Our Apartments</span>
     <h2 class="sec-title">Choose your <em>Athens</em></h2>
-    <p class="sec-sub">Both at Rizari 15 · Pangrati, Athens — same address, same soul, different scale</p>
+    <p class="sec-sub">Both at Rizari 15 &middot; Pangrati, Athens</p>
   </div>
   <div class="prop-grid">
-
-    <!-- Athens II -->
     <div class="prop-card reveal">
       <div class="prop-card-img" style="background-image:url('https://heko-athens-landing.github.io/photos/bedroom.jpg')"></div>
       <div class="prop-card-overlay"></div>
       <div class="prop-card-body">
         <span class="prop-tag">Studio Apartment</span>
         <h2 class="prop-name"><em>Athens</em> II</h2>
-        <p class="prop-desc">A thoughtfully designed studio for two — marble, ochre tones, rain shower, and real Athenian neighbourhood life</p>
-        <div class="prop-meta">
-          <span class="prop-chip">Ground Floor</span>
-          <span class="prop-chip">Pangrati</span>
-          <span class="prop-chip">8 min · Panathenaic Stadium</span>
-          <span class="prop-chip">10 min · Metro</span>
-        </div>
+        <p class="prop-desc">A thoughtfully designed studio for two &mdash; marble, ochre tones, rain shower, real Athenian neighbourhood life</p>
+        <div class="prop-meta"><span class="prop-chip">Ground Floor</span><span class="prop-chip">Pangrati</span><span class="prop-chip">8 min &middot; Stadium</span><span class="prop-chip">10 min &middot; Metro</span></div>
         <div class="prop-cta-row">
-          <a href="https://www.booking.com/hotel/gr/heko-collection-athens-2.en-gb.html?aid=1263239&label=PShare-Pulse-h8WqGb%401777849012&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&"
-             target="_blank" rel="noopener noreferrer" class="btn-prop">Book</a>
-          <a href="https://heko-athens-landing.github.io/" target="_blank" rel="noopener noreferrer" class="btn-prop-ghost">View Full Page →</a>
+          <a href="https://www.booking.com/hotel/gr/heko-collection-athens-2.en-gb.html?aid=1263239&label=PShare-Pulse-h8WqGb%401777849012&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn-prop">Book</a>
+          <button class="btn-prop-ghost" onclick="showPage('athens2')">View Details &rarr;</button>
         </div>
       </div>
     </div>
-
-    <!-- HeKo Modern -->
     <div class="prop-card reveal d1">
       <div class="prop-card-img" style="background-image:url('https://heko-modern-athens.github.io/photos/living.jpg')"></div>
       <div class="prop-card-overlay"></div>
       <div class="prop-card-body">
         <span class="prop-tag">Two-Bedroom Apartment</span>
         <h2 class="prop-name"><em>HeKo</em> Modern</h2>
-        <p class="prop-desc">Spacious open-plan apartment with parquet floors, arched details, and two bedrooms — perfect for families and groups</p>
-        <div class="prop-meta">
-          <span class="prop-chip">2 Bedrooms</span>
-          <span class="prop-chip">City Centre</span>
-          <span class="prop-chip">300 m · Metro Evangelismos</span>
-          <span class="prop-chip">600 m · Cycladic Museum</span>
-        </div>
+        <p class="prop-desc">Spacious open-plan apartment with parquet floors, arched details, and two bedrooms &mdash; perfect for families</p>
+        <div class="prop-meta"><span class="prop-chip">2 Bedrooms</span><span class="prop-chip">City Centre</span><span class="prop-chip">300 m &middot; Metro</span><span class="prop-chip">600 m &middot; Cycladic Museum</span></div>
         <div class="prop-cta-row">
-          <a href="https://www.booking.com/hotel/gr/heko-collection-athens-center-1.ru.html?aid=1263239&label=PShare-Pulse-rHrcls%401777849204&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&"
-             target="_blank" rel="noopener noreferrer" class="btn-prop">Book</a>
-          <a href="https://heko-modern-athens.github.io/" target="_blank" rel="noopener noreferrer" class="btn-prop-ghost">View Full Page →</a>
+          <a href="https://www.booking.com/hotel/gr/heko-collection-athens-center-1.ru.html?aid=1263239&label=PShare-Pulse-rHrcls%401777849204&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn-prop">Book</a>
+          <button class="btn-prop-ghost" onclick="showPage('modern')">View Details &rarr;</button>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<div class="meander" style="background: var(--bg);"></div>
+<div class="meander" style="background:var(--bg);"></div>
 
-<!-- ═══════════════ ABOUT ═══════════════ -->
-<section style="background: var(--bg);">
+<section style="background:var(--bg);">
   <div class="about">
-    <div class="reveal">
-      <p class="about-label">About</p>
-    </div>
+    <div class="reveal"><p class="about-label">About</p></div>
     <div class="reveal d1">
       <h2>Two homes,<br>one <em>city</em></h2>
-      <p>Heko Collection brings together two distinct apartments in the same corner of Athens — a design studio and a spacious two-bedroom flat, both at Rizari 15 in Pangrati. Whether you are travelling as a couple, solo, or with family, there is a Heko home for you.</p>
-      <p>Both apartments are within walking distance of the Panathenaic Stadium, the Cycladic Art Museum, Syntagma Square, and the Acropolis. Metro Evangelismos is 10 minutes on foot — or just 300 metres from the door.</p>
-      <div class="badges">
-        <span class="badge">📍 Rizari 15, Pangrati</span>
-        <span class="badge">🏛 Athens, Greece</span>
-        <span class="badge">✔ Online Booking</span>
-      </div>
+      <p>Heko Collection brings together two distinct apartments in the same corner of Athens &mdash; a design studio and a spacious two-bedroom flat, both at Rizari 15 in Pangrati.</p>
+      <p>Both apartments are within walking distance of the Panathenaic Stadium, the Cycladic Art Museum, Syntagma Square, and the Acropolis. Metro Evangelismos is 300 metres from the door.</p>
+      <div class="badges"><span class="badge">&#128205; Rizari 15, Pangrati</span><span class="badge">&#127963; Athens, Greece</span><span class="badge">&#10004; Online Booking</span></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ AMENITIES ═══════════════ -->
 <section class="amenities">
-  <div class="sec-head reveal">
-    <span class="sec-label">Amenities</span>
-    <h2 class="sec-title">Everything for your comfort</h2>
-  </div>
+  <div class="sec-head reveal"><span class="sec-label">Amenities</span><h2 class="sec-title">Everything for your comfort</h2></div>
   <div class="am-grid">
-    <div class="am-item reveal">
-      <span class="am-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/></svg></span>
-      <span class="am-name">Air Conditioning</span>
-    </div>
-    <div class="am-item reveal d1">
-      <span class="am-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1.5" fill="currentColor" stroke="none"/></svg></span>
-      <span class="am-name">Free Wi-Fi</span>
-    </div>
-    <div class="am-item reveal d2">
-      <span class="am-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="2" x2="8" y2="22"/><path d="M5 2v5a3 3 0 0 0 6 0V2"/><line x1="16" y1="2" x2="16" y2="22"/></svg></span>
-      <span class="am-name">Kitchen</span>
-    </div>
-    <div class="am-item reveal d3">
-      <span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><line x1="6" y1="6" x2="8" y2="6"/><line x1="10" y1="6" x2="12" y2="6"/></svg></span>
-      <span class="am-name">Washing Machine</span>
-    </div>
-    <div class="am-item reveal">
-      <span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
-      <span class="am-name">Flat-screen TV</span>
-    </div>
-    <div class="am-item reveal d1">
-      <span class="am-icon"><svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8v1h16v-1a8 8 0 0 0-8-8z"/><line x1="8" y1="15" x2="8" y2="18"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="16" y1="15" x2="16" y2="18"/></svg></span>
-      <span class="am-name">Private Bathroom</span>
-    </div>
+    <div class="am-item reveal"><span class="am-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/></svg></span><span class="am-name">Air Conditioning</span></div>
+    <div class="am-item reveal d1"><span class="am-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1.5" fill="currentColor" stroke="none"/></svg></span><span class="am-name">Free Wi-Fi</span></div>
+    <div class="am-item reveal d2"><span class="am-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="2" x2="8" y2="22"/><path d="M5 2v5a3 3 0 0 0 6 0V2"/><line x1="16" y1="2" x2="16" y2="22"/></svg></span><span class="am-name">Kitchen</span></div>
+    <div class="am-item reveal d3"><span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><line x1="6" y1="6" x2="8" y2="6"/><line x1="10" y1="6" x2="12" y2="6"/></svg></span><span class="am-name">Washing Machine</span></div>
+    <div class="am-item reveal"><span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><span class="am-name">Flat-screen TV</span></div>
+    <div class="am-item reveal d1"><span class="am-icon"><svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8v1h16v-1a8 8 0 0 0-8-8z"/><line x1="8" y1="15" x2="8" y2="18"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="16" y1="15" x2="16" y2="18"/></svg></span><span class="am-name">Private Bathroom</span></div>
   </div>
 </section>
 
-<!-- ═══════════════ QUOTE ═══════════════ -->
-<section style="background: var(--bg);">
+<section style="background:var(--bg);">
   <div class="quote-wrap reveal">
-    <span class="quote-mark">"</span>
+    <span class="quote-mark">&ldquo;</span>
     <p class="quote-text">Athens is not just a city. It is a place where every stone remembers eternity. We built these homes to help you feel exactly that.</p>
-    <p class="quote-attr">— Heko Collection</p>
+    <p class="quote-attr">&mdash; Heko Collection</p>
   </div>
 </section>
 
-<!-- ═══════════════ REVIEWS ═══════════════ -->
 <section class="reviews">
-  <div class="sec-head reveal" style="padding-bottom: 40px;">
-    <span class="sec-label">Guest Reviews</span>
-    <h2 class="sec-title">What guests say</h2>
-  </div>
-  <div class="reviews-inner">
-    <div class="reviews-grid">
-
-      <div class="review-card reveal">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">James H.</p>
-            <p class="reviewer-origin">🇬🇧 United Kingdom &nbsp;·&nbsp; solo</p>
-          </div>
-          <span class="review-rating">10</span>
-        </div>
-        <p class="review-text">"Exactly what you want from a base in Athens. Quiet street, comfortable bed, proper shower. The neighbourhood is authentic — no tourist traps, just real Athenian life. Ten minutes to the metro, twenty to the Acropolis. Couldn't ask for more."</p>
-        <div class="review-footer">
-          <span class="review-date">April 2026</span>
-          <span class="review-prop">Athens II</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal d1">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">Laura B.</p>
-            <p class="reviewer-origin">🇩🇪 Germany &nbsp;·&nbsp; family</p>
-          </div>
-          <span class="review-rating">10</span>
-        </div>
-        <p class="review-text">"Perfect for our family of four. The kids loved the bunk room and we had the double bedroom to ourselves. The kitchen is large enough to actually cook in. Syntagma metro is a ten-minute walk, which made everything easy."</p>
-        <div class="review-footer">
-          <span class="review-date">April 2026</span>
-          <span class="review-prop">HeKo Modern</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal d2">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">Anna W.</p>
-            <p class="reviewer-origin">🇩🇪 Germany &nbsp;·&nbsp; couple</p>
-          </div>
-          <span class="review-rating">9.6</span>
-        </div>
-        <p class="review-text">"Compact but very cleverly designed — everything you need is there, nothing feels crammed. We found a lovely coffee shop around the corner and made it our morning ritual. Easy walk to the Panathenaic Stadium. Would come back."</p>
-        <div class="review-footer">
-          <span class="review-date">March 2026</span>
-          <span class="review-prop">Athens II</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">David M.</p>
-            <p class="reviewer-origin">🇬🇧 United Kingdom &nbsp;·&nbsp; couple</p>
-          </div>
-          <span class="review-rating">9.6</span>
-        </div>
-        <p class="review-text">"You really can walk everywhere from here. The Cycladic Museum is literally around the corner, Syntagma is a fifteen-minute walk. The apartment is bright and well laid out — those arched details and parquet floors give it real character."</p>
-        <div class="review-footer">
-          <span class="review-date">March 2026</span>
-          <span class="review-prop">HeKo Modern</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal d1">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">Michael T.</p>
-            <p class="reviewer-origin">🇺🇸 United States &nbsp;·&nbsp; couple</p>
-          </div>
-          <span class="review-rating">10</span>
-        </div>
-        <p class="review-text">"We debated between a hotel and this apartment. So glad we chose the apartment. Having a proper kitchen saved us a lot, the space felt personal and well cared for. You're in a real neighbourhood, not a tourist bubble."</p>
-        <div class="review-footer">
-          <span class="review-date">March 2026</span>
-          <span class="review-prop">Athens II</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal d2">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">Anna K.</p>
-            <p class="reviewer-origin">🇵🇱 Poland &nbsp;·&nbsp; solo</p>
-          </div>
-          <span class="review-rating">9.8</span>
-        </div>
-        <p class="review-text">"I stayed alone and had the whole apartment to myself — felt very spacious. The open-plan kitchen and living area are lovely with lots of natural light. Ten minutes to the Panathenaic Stadium on foot, which was the highlight."</p>
-        <div class="review-footer">
-          <span class="review-date">January 2026</span>
-          <span class="review-prop">HeKo Modern</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">Luca B.</p>
-            <p class="reviewer-origin">🇮🇹 Italy &nbsp;·&nbsp; solo</p>
-          </div>
-          <span class="review-rating">9.4</span>
-        </div>
-        <p class="review-text">"You can tell someone put real thought into the design — not your standard rental. The Pangrati neighbourhood is lovely, very local feel. It's a studio, so not huge, but for what it is it's excellent. The rain shower was a highlight."</p>
-        <div class="review-footer">
-          <span class="review-date">January 2026</span>
-          <span class="review-prop">Athens II</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal d1">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">Sofia C.</p>
-            <p class="reviewer-origin">🇫🇷 France &nbsp;·&nbsp; friends</p>
-          </div>
-          <span class="review-rating">9.4</span>
-        </div>
-        <p class="review-text">"Four of us stayed here for a long weekend and it worked really well. Good space, a proper dining table, fast wifi. The Cycladic Museum was literally a few minutes' walk. The neighbourhood is central without feeling touristy."</p>
-        <div class="review-footer">
-          <span class="review-date">February 2026</span>
-          <span class="review-prop">HeKo Modern</span>
-        </div>
-      </div>
-
-      <div class="review-card reveal d2">
-        <div class="review-top">
-          <div>
-            <p class="reviewer-name">Céline M.</p>
-            <p class="reviewer-origin">🇫🇷 France &nbsp;·&nbsp; couple</p>
-          </div>
-          <span class="review-rating">9.2</span>
-        </div>
-        <p class="review-text">"We stayed a full week and the kitchen and washing machine made all the difference. It's a studio, so don't expect a lot of space, but it's designed well and felt comfortable even for a longer stay. Ground floor, quiet at night. Overall very good."</p>
-        <div class="review-footer">
-          <span class="review-date">February 2026</span>
-          <span class="review-prop">Athens II</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  <div class="sec-head reveal" style="padding-bottom:40px;"><span class="sec-label">Guest Reviews</span><h2 class="sec-title">What guests say</h2></div>
+  <div class="reviews-inner"><div class="reviews-grid">
+    <div class="review-card reveal"><div class="review-top"><div><p class="reviewer-name">James H.</p><p class="reviewer-origin">&#127468;&#127463; United Kingdom &nbsp;&middot;&nbsp; solo</p></div><span class="review-rating">10</span></div><p class="review-text">&ldquo;Exactly what you want from a base in Athens. Quiet street, comfortable bed, proper shower. The neighbourhood is authentic &mdash; no tourist traps, just real Athenian life.&rdquo;</p><div class="review-footer"><span class="review-date">April 2026</span><span class="review-prop">Athens II</span></div></div>
+    <div class="review-card reveal d1"><div class="review-top"><div><p class="reviewer-name">Laura B.</p><p class="reviewer-origin">&#127465;&#127466; Germany &nbsp;&middot;&nbsp; family</p></div><span class="review-rating">10</span></div><p class="review-text">&ldquo;Perfect for our family of four. The kids loved the bunk room and we had the double bedroom to ourselves. The kitchen is large enough to actually cook in.&rdquo;</p><div class="review-footer"><span class="review-date">April 2026</span><span class="review-prop">HeKo Modern</span></div></div>
+    <div class="review-card reveal d2"><div class="review-top"><div><p class="reviewer-name">Anna W.</p><p class="reviewer-origin">&#127465;&#127466; Germany &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">9.6</span></div><p class="review-text">&ldquo;Compact but very cleverly designed &mdash; everything you need is there, nothing feels crammed. Easy walk to the Panathenaic Stadium. Would come back.&rdquo;</p><div class="review-footer"><span class="review-date">March 2026</span><span class="review-prop">Athens II</span></div></div>
+    <div class="review-card reveal"><div class="review-top"><div><p class="reviewer-name">David M.</p><p class="reviewer-origin">&#127468;&#127463; United Kingdom &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">9.6</span></div><p class="review-text">&ldquo;You really can walk everywhere from here. The Cycladic Museum is literally around the corner. Those arched details and parquet floors give it real character.&rdquo;</p><div class="review-footer"><span class="review-date">March 2026</span><span class="review-prop">HeKo Modern</span></div></div>
+    <div class="review-card reveal d1"><div class="review-top"><div><p class="reviewer-name">Michael T.</p><p class="reviewer-origin">&#127482;&#127480; United States &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">10</span></div><p class="review-text">&ldquo;So glad we chose the apartment. The space felt personal and well cared for. You&apos;re in a real neighbourhood, not a tourist bubble.&rdquo;</p><div class="review-footer"><span class="review-date">March 2026</span><span class="review-prop">Athens II</span></div></div>
+    <div class="review-card reveal d2"><div class="review-top"><div><p class="reviewer-name">Anna K.</p><p class="reviewer-origin">&#127477;&#127473; Poland &nbsp;&middot;&nbsp; solo</p></div><span class="review-rating">9.8</span></div><p class="review-text">&ldquo;The open-plan kitchen and living area are lovely with lots of natural light. Ten minutes to the Panathenaic Stadium on foot, which was the highlight.&rdquo;</p><div class="review-footer"><span class="review-date">January 2026</span><span class="review-prop">HeKo Modern</span></div></div>
+  </div></div>
 </section>
 
-<!-- ═══════════════ LOCATION ═══════════════ -->
 <section class="location-strip">
   <div class="loc-inner reveal">
     <span class="loc-label">Location</span>
     <h2 class="loc-title">In the <em>heart</em><br>of historic Athens</h2>
     <p class="loc-address">Rizari 15, Pangrati<br>Athens, 116 34, Greece</p>
-    <p class="loc-text">Both apartments share the same address in Pangrati — an authentic, lively Athenian neighbourhood with easy access to everything that makes this city extraordinary.</p>
+    <p class="loc-text">Both apartments share the same address in Pangrati &mdash; an authentic, lively Athenian neighbourhood.</p>
     <div class="loc-landmarks">
-      <span class="loc-landmark">🚇 Metro Evangelismos — 300 m</span>
-      <span class="loc-landmark">🏟 Panathenaic Stadium — 8 min</span>
-      <span class="loc-landmark">🏛 Cycladic Art Museum — 600 m</span>
-      <span class="loc-landmark">🏛 Syntagma Square — 1.2 km</span>
-      <span class="loc-landmark">🏛 Temple of Olympian Zeus — 1.7 km</span>
-      <span class="loc-landmark">🏛 Acropolis — 2 km</span>
-      <span class="loc-landmark">🏛 Monastiraki — 2.1 km</span>
-      <span class="loc-landmark">✈ Airport — 27 km</span>
+      <span class="loc-landmark">&#128647; Metro Evangelismos &mdash; 300 m</span>
+      <span class="loc-landmark">&#127967; Panathenaic Stadium &mdash; 8 min</span>
+      <span class="loc-landmark">&#127963; Cycladic Art Museum &mdash; 600 m</span>
+      <span class="loc-landmark">&#127963; Syntagma Square &mdash; 1.2 km</span>
+      <span class="loc-landmark">&#127963; Acropolis &mdash; 2 km</span>
+      <span class="loc-landmark">&#9992; Airport &mdash; 27 km</span>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ FINAL CTA ═══════════════ -->
 <section class="final-cta">
   <div class="reveal">
     <h2>Ready to discover<br><em>Athens?</em></h2>
-    <p class="sub">Choose your apartment — both available on Booking.com</p>
+    <p class="sub">Choose your apartment &mdash; both available on Booking.com</p>
     <div class="cta-cards">
       <div class="cta-card">
         <p class="cta-card-label">Studio Apartment</p>
         <h3 class="cta-card-name"><em>Athens</em> II</h3>
-        <p class="cta-card-meta">Ground Floor · Pangrati · Rain shower · For 2</p>
-        <a href="https://www.booking.com/hotel/gr/heko-collection-athens-2.en-gb.html?aid=1263239&label=PShare-Pulse-h8WqGb%401777849012&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&"
-           target="_blank" rel="noopener noreferrer" class="btn-fill">Book on Booking.com</a>
+        <p class="cta-card-meta">Ground Floor &middot; Pangrati &middot; Rain shower &middot; For 2</p>
+        <a href="https://www.booking.com/hotel/gr/heko-collection-athens-2.en-gb.html?aid=1263239&label=PShare-Pulse-h8WqGb%401777849012&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn-fill">Book on Booking.com</a>
       </div>
       <div class="cta-card">
         <p class="cta-card-label">Two-Bedroom Apartment</p>
         <h3 class="cta-card-name"><em>HeKo</em> Modern</h3>
-        <p class="cta-card-meta">City Centre · Metro 300 m · Parquet · For 2–4</p>
-        <a href="https://www.booking.com/hotel/gr/heko-collection-athens-center-1.ru.html?aid=1263239&label=PShare-Pulse-rHrcls%401777849204&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&"
-           target="_blank" rel="noopener noreferrer" class="btn-fill">Book on Booking.com</a>
+        <p class="cta-card-meta">City Centre &middot; Metro 300 m &middot; Parquet &middot; For 2&ndash;4</p>
+        <a href="https://www.booking.com/hotel/gr/heko-collection-athens-center-1.ru.html?aid=1263239&label=PShare-Pulse-rHrcls%401777849204&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn-fill">Book on Booking.com</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
-  <p>Heko Collection &nbsp;·&nbsp; Athens, Greece</p>
-  <div style="display:flex; gap:24px; align-items:center;">
-    <a href="https://heko-athens-landing.github.io/" target="_blank" rel="noopener noreferrer">Athens II →</a>
-    <a href="https://heko-modern-athens.github.io/" target="_blank" rel="noopener noreferrer">HeKo Modern →</a>
+  <p>Heko Collection &nbsp;&middot;&nbsp; Athens, Greece</p>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <button onclick="showPage('athens2')">Athens II &rarr;</button>
+    <button onclick="showPage('modern')">HeKo Modern &rarr;</button>
   </div>
 </footer>
 
-<script>
-  const els = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
-  els.forEach(el => io.observe(el));
-</script>
+</div><!-- /page-home -->
 
+
+<!-- ===================== PAGE: ATHENS II ===================== -->
+<div id="page-athens2" class="apt-page" style="display:none">
+
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide" style="background-image:url('https://heko-athens-landing.github.io/photos/room.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://heko-athens-landing.github.io/photos/kitchen.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://heko-athens-landing.github.io/photos/bathroom.jpg')"></div>
+  </div>
+  <div class="stars"></div>
+  <div class="moon"></div>
+  <svg class="acropolis" viewBox="0 0 1100 280" xmlns="http://www.w3.org/2000/svg" fill="var(--cream)">
+    <path d="M0 280 Q80 240 180 220 Q300 198 420 185 Q540 172 560 168 Q580 164 600 163 Q620 162 640 163 Q660 164 680 168 Q700 172 820 185 Q940 198 1060 220 Q1060 220 1100 240 L1100 280Z"/>
+    <rect x="332" y="195" width="436" height="10"/><rect x="344" y="205" width="412" height="9"/><rect x="355" y="214" width="390" height="8"/>
+    <rect x="338" y="155" width="424" height="14"/><rect x="344" y="146" width="412" height="9"/>
+    <polygon points="344,146 756,146 550,95"/>
+    <rect x="349" y="169" width="14" height="42"/><rect x="371" y="169" width="14" height="42"/><rect x="393" y="169" width="14" height="42"/>
+    <rect x="415" y="169" width="14" height="42"/><rect x="437" y="169" width="14" height="42"/><rect x="459" y="169" width="14" height="42"/>
+    <rect x="481" y="169" width="14" height="42"/><rect x="503" y="169" width="14" height="42"/><rect x="525" y="169" width="14" height="42"/>
+    <rect x="547" y="169" width="14" height="42"/><rect x="569" y="169" width="14" height="42"/><rect x="591" y="169" width="14" height="42"/>
+    <rect x="613" y="169" width="14" height="42"/><rect x="635" y="169" width="14" height="42"/><rect x="657" y="169" width="14" height="42"/>
+    <rect x="679" y="169" width="14" height="42"/><rect x="701" y="169" width="14" height="42"/><rect x="723" y="169" width="14" height="42"/>
+    <rect x="745" y="169" width="14" height="42"/>
+  </svg>
+  <div class="hero-inner">
+    <p class="eyebrow">Athens &nbsp;&middot;&nbsp; Greece &nbsp;&middot;&nbsp; Studio Apartment</p>
+    <h1 class="hero-name"><em>Heko</em><br>Collection</h1>
+    <p class="hero-sub">Athens &nbsp;II</p>
+    <div class="rule"></div>
+    <p class="hero-tagline">A design studio apartment in the heart of the eternal city</p>
+    <a href="https://www.booking.com/hotel/gr/heko-collection-athens-2.en-gb.html?aid=1263239&label=PShare-Pulse-h8WqGb%401777849012&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn"><span>Book a Room</span></a>
+  </div>
+  <div class="scroll-hint"><span>Discover More</span><div class="scroll-tick"></div></div>
+</section>
+
+<div class="meander"></div>
+
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar reveal"><span class="pillar-glyph">&#127963;</span><h3 class="pillar-title">Heart of Athens</h3><p class="pillar-body">In Pangrati &mdash; a lively residential quarter 20 minutes from the Acropolis and steps from the Panathenaic Stadium</p></div>
+    <div class="pillar reveal d1"><span class="pillar-glyph">&#9672;</span><h3 class="pillar-title">Intimate Scale</h3><p class="pillar-body">A thoughtfully designed studio apartment with a personal touch and the warmth of genuine Greek hospitality</p></div>
+    <div class="pillar reveal d2"><span class="pillar-glyph">&#10022;</span><h3 class="pillar-title">Curated Design</h3><p class="pillar-body">Contemporary luxury with a Mediterranean soul &mdash; marble, ochre tones, soft Aegean light</p></div>
+  </div>
+</section>
+
+<div class="meander" style="background:var(--bg);"></div>
+
+<section class="gallery">
+  <div class="gallery-grid">
+    <div class="gallery-card reveal"><img src="https://heko-athens-landing.github.io/photos/bedroom.jpg" alt="Bedroom" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Bedroom</span><span class="gallery-card-name">Rest &amp; Recharge</span></div></div>
+    <div class="gallery-card reveal d1"><img src="https://heko-athens-landing.github.io/photos/kitchen.jpg" alt="Kitchen" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Kitchen</span><span class="gallery-card-name">Fully Equipped</span></div></div>
+    <div class="gallery-card reveal d2"><img src="https://heko-athens-landing.github.io/photos/bathroom.jpg" alt="Bathroom" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Bathroom</span><span class="gallery-card-name">Rain Shower</span></div></div>
+    <div class="gallery-card reveal"><img src="https://heko-athens-landing.github.io/photos/room.jpg" alt="Studio" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Studio</span><span class="gallery-card-name">Open Layout</span></div></div>
+    <div class="gallery-card reveal d1"><img src="https://heko-athens-landing.github.io/photos/desk.jpg" alt="Workspace" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">Work Space</span><span class="gallery-card-name">Light &amp; Comfort</span></div></div>
+    <div class="gallery-card reveal d2"><img src="https://heko-athens-landing.github.io/photos/entrance.jpg" alt="Entrance" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Interior</span><span class="gallery-card-name">Clean Design</span></div></div>
+  </div>
+</section>
+
+<section style="background:var(--bg);">
+  <div class="about">
+    <div class="reveal"><p class="about-label">About</p></div>
+    <div class="reveal d1">
+      <h2>Where <em>history</em><br>meets modernity</h2>
+      <p>Heko Collection Athens 2 is a design studio apartment in Pangrati &mdash; one of Athens&apos; most authentic and relaxed neighbourhoods. The Panathenaic Stadium is an 8-minute walk away.</p>
+      <p>Every room is a thoughtfully designed space where ancient motifs weave with contemporary comfort. Everything here is crafted to feel like home &mdash; a very beautiful one.</p>
+      <div class="badges"><span class="badge">&#128205; City Centre</span><span class="badge">&#127963; Pangrati</span><span class="badge">&#10004; Online Booking</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities">
+  <div class="sec-head reveal"><span class="sec-label">Amenities</span><h2 class="sec-title">Everything for your comfort</h2></div>
+  <div class="am-grid">
+    <div class="am-item reveal"><span class="am-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/></svg></span><span class="am-name">Air Conditioning</span></div>
+    <div class="am-item reveal d1"><span class="am-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1.5" fill="currentColor" stroke="none"/></svg></span><span class="am-name">Free Wi-Fi</span></div>
+    <div class="am-item reveal d2"><span class="am-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="2" x2="8" y2="22"/><path d="M5 2v5a3 3 0 0 0 6 0V2"/><line x1="16" y1="2" x2="16" y2="22"/></svg></span><span class="am-name">Kitchen</span></div>
+    <div class="am-item reveal d3"><span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><line x1="6" y1="6" x2="8" y2="6"/><line x1="10" y1="6" x2="12" y2="6"/></svg></span><span class="am-name">Washing Machine</span></div>
+    <div class="am-item reveal"><span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><span class="am-name">Flat-screen TV</span></div>
+    <div class="am-item reveal d1"><span class="am-icon"><svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8v1h16v-1a8 8 0 0 0-8-8z"/><line x1="8" y1="15" x2="8" y2="18"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="16" y1="15" x2="16" y2="18"/></svg></span><span class="am-name">Private Bathroom</span></div>
+  </div>
+</section>
+
+<section style="background:var(--bg);">
+  <div class="quote-wrap reveal">
+    <span class="quote-mark">&ldquo;</span>
+    <p class="quote-text">Athens is not just a city. It is a place where every stone remembers eternity. We built a home that helps you feel exactly that.</p>
+    <p class="quote-attr">&mdash; Heko Collection</p>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="reviews-inner"><div class="reviews-grid">
+    <div class="review-card reveal"><div class="review-top"><div><p class="reviewer-name">James H.</p><p class="reviewer-origin">&#127468;&#127463; United Kingdom &nbsp;&middot;&nbsp; solo</p></div><span class="review-rating">10</span></div><p class="review-text">&ldquo;Exactly what you want from a base in Athens. Quiet street, comfortable bed, proper shower. The neighbourhood is authentic &mdash; no tourist traps, just real Athenian life. Couldn&apos;t ask for more.&rdquo;</p><span class="review-date">April 2026</span></div>
+    <div class="review-card reveal d1"><div class="review-top"><div><p class="reviewer-name">Anna W.</p><p class="reviewer-origin">&#127465;&#127466; Germany &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">9.6</span></div><p class="review-text">&ldquo;Compact but very cleverly designed &mdash; everything you need is there, nothing feels crammed. We found a lovely coffee shop around the corner and made it our morning ritual.&rdquo;</p><span class="review-date">March 2026</span></div>
+    <div class="review-card reveal d2"><div class="review-top"><div><p class="reviewer-name">Michael T.</p><p class="reviewer-origin">&#127482;&#127480; United States &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">10</span></div><p class="review-text">&ldquo;Having a proper kitchen saved us a lot, the space felt personal and well cared for. You&apos;re in a real neighbourhood, not a tourist bubble.&rdquo;</p><span class="review-date">March 2026</span></div>
+    <div class="review-card reveal"><div class="review-top"><div><p class="reviewer-name">C&eacute;line M.</p><p class="reviewer-origin">&#127467;&#127479; France &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">9.2</span></div><p class="review-text">&ldquo;We stayed a full week and the kitchen and washing machine made all the difference. It&apos;s designed well and felt comfortable even for a longer stay. Ground floor, quiet at night.&rdquo;</p><span class="review-date">February 2026</span></div>
+    <div class="review-card reveal d1"><div class="review-top"><div><p class="reviewer-name">Luca B.</p><p class="reviewer-origin">&#127470;&#127481; Italy &nbsp;&middot;&nbsp; solo</p></div><span class="review-rating">9.4</span></div><p class="review-text">&ldquo;You can tell someone put real thought into the design &mdash; not your standard rental. The Pangrati neighbourhood is lovely, very local feel. The rain shower was a highlight.&rdquo;</p><span class="review-date">January 2026</span></div>
+    <div class="review-card reveal d2"><div class="review-top"><div><p class="reviewer-name">Nikos P.</p><p class="reviewer-origin">&#127468;&#127479; Greece &nbsp;&middot;&nbsp; solo</p></div><span class="review-rating">9.0</span></div><p class="review-text">&ldquo;Stayed here for work. Clean, comfortable, good wifi. The apartment is well maintained and the area is convenient. Nothing flashy about Pangrati &mdash; that&apos;s exactly why I like it.&rdquo;</p><span class="review-date">April 2026</span></div>
+  </div></div>
+</section>
+
+<section class="location-strip">
+  <div class="loc-inner reveal">
+    <span class="loc-label">Location</span>
+    <h2 class="loc-title">In the heart of<br>historic Athens</h2>
+    <p class="loc-address">Rizari 15, Ground Floor<br>Athens, 116 34, Greece</p>
+    <p class="loc-text">Pangrati neighbourhood &mdash; quiet, authentic Athens with easy access to the city&apos;s main sights.</p>
+    <div class="loc-landmarks">
+      <span class="loc-landmark">&#127967; Panathenaic Stadium &mdash; 8 min</span>
+      <span class="loc-landmark">&#128647; Metro Evangelismos &mdash; 10 min</span>
+      <span class="loc-landmark">&#127963; Acropolis &mdash; 20 min</span>
+      <span class="loc-landmark">&#127963; Syntagma Square &mdash; 15 min</span>
+      <span class="loc-landmark">&#9992; Airport &mdash; 45 min</span>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="reveal">
+    <h2>Ready to discover<br><em>Athens?</em></h2>
+    <p class="sub">Available on Booking.com</p>
+    <a href="https://www.booking.com/hotel/gr/heko-collection-athens-2.en-gb.html?aid=1263239&label=PShare-Pulse-h8WqGb%401777849012&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn-fill">Book a Room</a>
+  </div>
+</section>
+
+<footer>
+  <p>Heko Collection Athens 2 &nbsp;&middot;&nbsp; Athens, Greece</p>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <button onclick="showPage('home')">&larr; All Apartments</button>
+    <a href="https://www.booking.com/hotel/gr/heko-collection-athens-2.en-gb.html?aid=1263239&label=PShare-Pulse-h8WqGb%401777849012&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer">Booking.com &rarr;</a>
+  </div>
+</footer>
+
+</div><!-- /page-athens2 -->
+
+
+<!-- ===================== PAGE: HEKO MODERN ===================== -->
+<div id="page-modern" class="apt-page" style="display:none">
+
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide" style="background-image:url('https://heko-modern-athens.github.io/photos/living.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://heko-modern-athens.github.io/photos/bedroom.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://heko-modern-athens.github.io/photos/kitchen.jpg')"></div>
+  </div>
+  <div class="stars"></div>
+  <div class="moon"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Athens &nbsp;&middot;&nbsp; Greece &nbsp;&middot;&nbsp; Two-Bedroom Apartment</p>
+    <h1 class="hero-name"><em>HeKo</em><br>Modern</h1>
+    <p class="hero-sub">Heart of Athens</p>
+    <div class="rule"></div>
+    <p class="hero-tagline">A spacious apartment 600 m from the Cycladic Art Museum &mdash; in the very heart of Athens</p>
+    <a href="https://www.booking.com/hotel/gr/heko-collection-athens-center-1.ru.html?aid=1263239&label=PShare-Pulse-rHrcls%401777849204&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn"><span>Book a Room</span></a>
+  </div>
+  <div class="scroll-hint"><span>Discover More</span><div class="scroll-tick"></div></div>
+</section>
+
+<div class="meander"></div>
+
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar reveal"><span class="pillar-glyph">&#127963;</span><h3 class="pillar-title">Heart of Athens</h3><p class="pillar-body">600 m to the Cycladic Art Museum, 1.2 km to Syntagma Square &mdash; the Acropolis and Monastiraki within walking distance</p></div>
+    <div class="pillar reveal d1"><span class="pillar-glyph">&#9672;</span><h3 class="pillar-title">Two Bedrooms</h3><p class="pillar-body">A double bedroom and a separate bunk room &mdash; comfortably accommodating a family or group of four</p></div>
+    <div class="pillar reveal d2"><span class="pillar-glyph">&#10022;</span><h3 class="pillar-title">Open &amp; Bright</h3><p class="pillar-body">Warm parquet floors, a full kitchen with dining area, and an arched open-plan layout that feels like home</p></div>
+  </div>
+</section>
+
+<div class="meander" style="background:var(--bg);"></div>
+
+<section class="gallery">
+  <div class="gallery-grid">
+    <div class="gallery-card reveal"><img src="https://heko-modern-athens.github.io/photos/bedroom.jpg" alt="Double bedroom" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Bedroom</span><span class="gallery-card-name">Restful Nights</span></div></div>
+    <div class="gallery-card reveal d1"><img src="https://heko-modern-athens.github.io/photos/bathroom.jpg" alt="Bathroom" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Bathroom</span><span class="gallery-card-name">Clean &amp; Complete</span></div></div>
+    <div class="gallery-card reveal d2"><img src="https://heko-modern-athens.github.io/photos/bunks.jpg" alt="Bunk room" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">Second Room</span><span class="gallery-card-name">Bunk Beds</span></div></div>
+    <div class="gallery-card wide reveal"><img src="https://heko-modern-athens.github.io/photos/living.jpg" alt="Living area" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Living Area</span><span class="gallery-card-name">Open Plan</span></div></div>
+    <div class="gallery-card wide reveal d1"><img src="https://heko-modern-athens.github.io/photos/kitchen.jpg" alt="Kitchen" loading="lazy"><div class="gallery-card-overlay"></div><div class="gallery-card-label"><span class="gallery-card-tag">The Kitchen</span><span class="gallery-card-name">Fully Equipped</span></div></div>
+  </div>
+</section>
+
+<section style="background:var(--bg);">
+  <div class="about">
+    <div class="reveal"><p class="about-label">About</p></div>
+    <div class="reveal d1">
+      <h2>Modern living in the <em>centre</em><br>of ancient Athens</h2>
+      <p>HeKo Modern is a two-bedroom apartment in the very heart of Athens &mdash; 600 metres from the Cycladic Art Museum and a comfortable walk from the Acropolis, the Temple of Olympian Zeus, and Monastiraki Square.</p>
+      <p>The apartment features an open-plan kitchen and dining area with warm parquet floors throughout, a fully equipped kitchen with a full-size refrigerator, and a private bathroom with washing machine. The arched interior layout gives the space a character rarely found in city-centre accommodation.</p>
+      <div class="badges"><span class="badge">&#128205; City Centre</span><span class="badge">&#128647; Metro Evangelismos &mdash; 300 m</span><span class="badge">&#10004; Online Booking</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities">
+  <div class="sec-head reveal"><span class="sec-label">Amenities</span><h2 class="sec-title">Everything for your comfort</h2></div>
+  <div class="am-grid">
+    <div class="am-item reveal"><span class="am-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/></svg></span><span class="am-name">Air Conditioning</span></div>
+    <div class="am-item reveal d1"><span class="am-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1.5" fill="currentColor" stroke="none"/></svg></span><span class="am-name">Free Wi-Fi</span></div>
+    <div class="am-item reveal d2"><span class="am-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="2" x2="8" y2="22"/><path d="M5 2v5a3 3 0 0 0 6 0V2"/><line x1="16" y1="2" x2="16" y2="22"/></svg></span><span class="am-name">Kitchen</span></div>
+    <div class="am-item reveal d3"><span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><line x1="6" y1="6" x2="8" y2="6"/><line x1="10" y1="6" x2="12" y2="6"/></svg></span><span class="am-name">Washing Machine</span></div>
+    <div class="am-item reveal"><span class="am-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><span class="am-name">Flat-screen TV</span></div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="reviews-inner"><div class="reviews-grid">
+    <div class="review-card reveal"><div class="review-top"><div><p class="reviewer-name">Laura B.</p><p class="reviewer-origin">&#127465;&#127466; Germany &nbsp;&middot;&nbsp; family</p></div><span class="review-rating">10</span></div><p class="review-text">&ldquo;Perfect for our family of four. The kids loved the bunk room and we had the double bedroom to ourselves. The kitchen is large enough to actually cook in.&rdquo;</p><span class="review-date">April 2026</span></div>
+    <div class="review-card reveal d1"><div class="review-top"><div><p class="reviewer-name">David M.</p><p class="reviewer-origin">&#127468;&#127463; United Kingdom &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">9.6</span></div><p class="review-text">&ldquo;You really can walk everywhere from here. Those arched details and parquet floors give it real character. The Cycladic Museum is literally around the corner.&rdquo;</p><span class="review-date">March 2026</span></div>
+    <div class="review-card reveal d2"><div class="review-top"><div><p class="reviewer-name">Sofia C.</p><p class="reviewer-origin">&#127467;&#127479; France &nbsp;&middot;&nbsp; friends</p></div><span class="review-rating">9.4</span></div><p class="review-text">&ldquo;Four of us stayed here for a long weekend and it worked really well. Good space, a proper dining table, fast wifi. The neighbourhood is central without feeling touristy.&rdquo;</p><span class="review-date">February 2026</span></div>
+    <div class="review-card reveal"><div class="review-top"><div><p class="reviewer-name">Marco V.</p><p class="reviewer-origin">&#127470;&#127481; Italy &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">9.2</span></div><p class="review-text">&ldquo;Great location, clean and comfortable. The kitchen is fully stocked and the fridge is a good size. Very convenient for a longer trip.&rdquo;</p><span class="review-date">March 2026</span></div>
+    <div class="review-card reveal d1"><div class="review-top"><div><p class="reviewer-name">Anna K.</p><p class="reviewer-origin">&#127477;&#127473; Poland &nbsp;&middot;&nbsp; solo</p></div><span class="review-rating">9.8</span></div><p class="review-text">&ldquo;The open-plan kitchen and living area are lovely with lots of natural light. Ten minutes to the Panathenaic Stadium on foot, which was the highlight.&rdquo;</p><span class="review-date">January 2026</span></div>
+    <div class="review-card reveal d2"><div class="review-top"><div><p class="reviewer-name">Nikos A.</p><p class="reviewer-origin">&#127468;&#127479; Greece &nbsp;&middot;&nbsp; couple</p></div><span class="review-rating">9.0</span></div><p class="review-text">&ldquo;Very good condition and location as central as it gets. The arched layout is a nice touch &mdash; it doesn&apos;t feel like a generic rental. Would book again.&rdquo;</p><span class="review-date">April 2026</span></div>
+  </div></div>
+</section>
+
+<section class="location-strip">
+  <div class="loc-inner reveal">
+    <span class="loc-label">Location</span>
+    <h2 class="loc-title">Surrounded by the<br>landmarks of Athens</h2>
+    <p class="loc-address">Rizari 15<br>Athens, 116 34, Greece</p>
+    <p class="loc-text">Within walking distance of the Cycladic Art Museum, the Temple of Olympian Zeus, the Acropolis, Monastiraki, and Syntagma.</p>
+    <div class="loc-landmarks">
+      <span class="loc-landmark">Metro Evangelismos &mdash; 300 m</span>
+      <span class="loc-landmark">Cycladic Art Museum &mdash; 600 m</span>
+      <span class="loc-landmark">Syntagma Square &mdash; 1.2 km</span>
+      <span class="loc-landmark">Zappeion Park &mdash; 1.3 km</span>
+      <span class="loc-landmark">Temple of Olympian Zeus &mdash; 1.7 km</span>
+      <span class="loc-landmark">Acropolis Museum &mdash; 2 km</span>
+      <span class="loc-landmark">Monastiraki Square &mdash; 2.1 km</span>
+      <span class="loc-landmark">Parthenon &mdash; 2.7 km</span>
+      <span class="loc-landmark">Beach &mdash; 8 km</span>
+      <span class="loc-landmark">Airport &mdash; 27 km</span>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="reveal">
+    <h2>Ready to discover<br><em>Athens?</em></h2>
+    <p class="sub">Available on Booking.com</p>
+    <a href="https://www.booking.com/hotel/gr/heko-collection-athens-center-1.ru.html?aid=1263239&label=PShare-Pulse-rHrcls%401777849204&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer" class="btn-fill">Book a Room</a>
+  </div>
+</section>
+
+<footer>
+  <p>HeKo Modern Apartment &nbsp;&middot;&nbsp; Athens, Greece</p>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <button onclick="showPage('home')">&larr; All Apartments</button>
+    <a href="https://www.booking.com/hotel/gr/heko-collection-athens-center-1.ru.html?aid=1263239&label=PShare-Pulse-rHrcls%401777849204&sid=f50c054ef507ae61d78535cb914eaf70&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" rel="noopener noreferrer">Booking.com &rarr;</a>
+  </div>
+</footer>
+
+</div><!-- /page-modern -->
+
+<script>
+  function showPage(name) {
+    ['home','athens2','modern'].forEach(function(p) {
+      document.getElementById('page-'+p).style.display = p===name ? '' : 'none';
+    });
+    var nav = document.getElementById('apt-nav');
+    var nameEl = document.getElementById('apt-nav-name');
+    if (name==='home') {
+      nav.style.display = 'none';
+    } else {
+      nav.style.display = 'flex';
+      nameEl.textContent = name==='athens2' ? 'Athens II' : 'HeKo Modern';
+      var page = document.getElementById('page-'+name);
+      page.querySelectorAll('.eyebrow,.hero-name,.hero-sub,.rule,.hero-tagline,.btn,.scroll-hint').forEach(function(el) {
+        el.style.animation='none'; void el.offsetWidth; el.style.animation='';
+      });
+    }
+    window.scrollTo({top:0,behavior:'instant'});
+    history.replaceState(null,'',name==='home'?window.location.pathname:'#'+name);
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+  (function() {
+    var hash = window.location.hash.slice(1);
+    if (hash==='athens2'||hash==='modern') showPage(hash);
+  })();
+</script>
 </body>
 </html>
